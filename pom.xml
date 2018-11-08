@@ -42,7 +42,7 @@
 	</build>
 
 	<scm>
-		<developerConnection>scm:git:git@github.com:takos78/spring5-doodles.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:takos78/sfg-pet-clininc.git</developerConnection>
 	</scm>
 
 	<modules>
