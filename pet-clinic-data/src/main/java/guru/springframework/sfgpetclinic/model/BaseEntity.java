@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class BaseEntity {
 
-	private Long id; 
+	protected Long id; 
 	
 }

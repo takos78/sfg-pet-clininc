@@ -1,12 +1,14 @@
 package guru.springframework.sfgpetclinic.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class Person extends BaseEntity {
 
-	private String firstName;
+	protected String firstName;
 	
-	private String lastName;
+	protected String lastName;
 	
 }
