@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import guru.springframework.sfgpetclinic.service.VetService;
 
 @Controller
-@RequestMapping("vet")
+@RequestMapping("vets")
 public class VetsController {
 
 	private VetService vetService;
