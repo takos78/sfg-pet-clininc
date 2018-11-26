@@ -11,6 +11,7 @@ import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.service.OwnerService;
 
 @Controller
+@RequestMapping("/owners")
 public class OwnersController {
 	
 	private final OwnerService ownerService;
@@ -28,7 +29,7 @@ public class OwnersController {
 		Set<Owner> owners = ownerService.findAll();
 		model.addAttribute("owners", owners);
 		
-		return "index.html";
+		return "owners/index.html";
 	}
 	
 }
