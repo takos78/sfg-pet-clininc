@@ -1,6 +1,5 @@
 package guru.springframework.sfgpetclinic.service.map;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
