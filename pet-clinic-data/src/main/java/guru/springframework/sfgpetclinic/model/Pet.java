@@ -2,14 +2,18 @@ package guru.springframework.sfgpetclinic.model;
 
 import java.time.LocalDate;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper=true)
+@ToString(exclude={"owner"})
 public class Pet extends BaseEntity {
 
 	private PetType petType;
+	
+	private String name;
 	
 	private Owner owner;
 	

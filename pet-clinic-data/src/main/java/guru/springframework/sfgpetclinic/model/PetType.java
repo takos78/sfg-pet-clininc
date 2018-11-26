@@ -1,10 +1,10 @@
 package guru.springframework.sfgpetclinic.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper=true)
 public class PetType extends BaseEntity {
 
 	private String name;

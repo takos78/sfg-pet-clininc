@@ -1,13 +1,20 @@
 package guru.springframework.sfgpetclinic.bootstrap;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import guru.springframework.sfgpetclinic.model.Owner;
+import guru.springframework.sfgpetclinic.model.Pet;
 import guru.springframework.sfgpetclinic.model.PetType;
 import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.service.OwnerService;
+import guru.springframework.sfgpetclinic.service.PetService;
 import guru.springframework.sfgpetclinic.service.PetTypeService;
 import guru.springframework.sfgpetclinic.service.VetService;
 
@@ -18,14 +25,11 @@ public class DataLoader implements CommandLineRunner {
 	
 	private final VetService vetService;
 	
-	private final PetTypeService petTypeService;
-	
 	
 	@Autowired
-	public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+	public DataLoader(OwnerService ownerService, VetService vetService) {
 		this.ownerService = ownerService;
 		this.vetService = vetService;
-		this.petTypeService = petTypeService;
 	}
 
 	@Override
@@ -33,23 +37,51 @@ public class DataLoader implements CommandLineRunner {
 		
 		PetType dog = new PetType();
 		dog.setName("Dog");
-		petTypeService.save(dog);
 
 		PetType cat = new PetType();
 		dog.setName("Cat");
-		petTypeService.save(cat);
 		
 		System.out.println("Loaded PetTypes ---");
+				
+		Pet drake = new Pet();
+		drake.setName("Drake");
+		drake.setPetType(dog);
+		drake.setBirthDay(LocalDate.of(2018, Month.JUNE, 15));
+		
+		Pet johni = new Pet();
+		johni.setName("Johni");
+		johni.setPetType(cat);
+		johni.setBirthDay(LocalDate.of(2017, 05, 11));
+
+		Pet saffi = new Pet();
+		saffi.setName("Saffi");
+		saffi.setPetType(cat);
+		saffi.setBirthDay(LocalDate.of(2017, 05, 12));
+		
+		Set<Pet> johnPets = new HashSet<>();
+		johnPets.add(drake);
+		johnPets.add(johni);
 		
 		Owner owner1 = new Owner();
 		owner1.setFirstName("John");
 		owner1.setLastName("Charmac");
-		
+		owner1.setCity("Kimle-east");
+		owner1.setAddress("Secret street 42");
+		owner1.setTelephone("+36 77 4586789");
+		owner1.setPets(johnPets);
+				
 		ownerService.save(owner1);
 		
+		Set<Pet> emmaPets = new HashSet<>();
+		emmaPets.add(saffi);
+		
 		Owner owner2 = new Owner();
-		owner2.setFirstName("James");
-		owner2.setLastName("Wire");
+		owner2.setFirstName("Emma");
+		owner2.setLastName("Flower");
+		owner2.setCity("Kimle");
+		owner2.setAddress("Secret street 52");
+		owner2.setTelephone("+36 77 7786790");
+		owner2.setPets(emmaPets);
 		
 		ownerService.save(owner2);
 
