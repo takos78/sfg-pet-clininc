@@ -7,10 +7,5 @@ import guru.springframework.sfgpetclinic.service.VetService;
 
 @Service
 public class VetServiceMap extends AbstractMapService<Vet> implements VetService {
-	
-	@Override
-	public Vet save(Vet entity) {
-		return super.save(entity);
-	}
 
 }
