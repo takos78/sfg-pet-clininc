@@ -42,7 +42,7 @@
 
 	<scm>
 		<developerConnection>scm:git:git@github.com:takos78/sfg-pet-clininc.git</developerConnection>
-	  <tag>sfg-pet-clinic-0.0.1</tag>
+	  <tag>sfg-pet-clinic-0.0.2</tag>
   </scm>
 
 	<modules>
