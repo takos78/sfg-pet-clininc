@@ -6,6 +6,6 @@ import guru.springframework.sfgpetclinic.model.PetType;
 import guru.springframework.sfgpetclinic.service.PetTypeService;
 
 @Service
-public class PetTypeServiceMap extends AbstractMapService<PetType> implements PetTypeService {
+public class PetTypeMapService extends AbstractMapService<PetType> implements PetTypeService {
 
 }
