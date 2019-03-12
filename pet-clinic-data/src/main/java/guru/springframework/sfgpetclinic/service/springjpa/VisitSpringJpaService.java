@@ -29,6 +29,13 @@ public class VisitSpringJpaService implements VisitService {
 
 	@Override
 	public Visit save(Visit entity) {
+		// TODO Remove
+		System.out.println("####################");
+		System.out.println("####################");
+		System.out.println("####################");
+		System.out.println("####################");
+		System.out.println("####################");
+		System.out.println("####################");
 		return visitRepository.save(entity);
 	}
 

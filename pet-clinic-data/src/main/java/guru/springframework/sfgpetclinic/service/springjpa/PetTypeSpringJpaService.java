@@ -4,11 +4,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import guru.springframework.sfgpetclinic.model.PetType;
 import guru.springframework.sfgpetclinic.repository.PetTypeRepository;
 import guru.springframework.sfgpetclinic.service.PetTypeService;
 
+@Service
+@Profile("springjpa")
 public class PetTypeSpringJpaService implements PetTypeService {
 
 	private final PetTypeRepository petTypeRepository;

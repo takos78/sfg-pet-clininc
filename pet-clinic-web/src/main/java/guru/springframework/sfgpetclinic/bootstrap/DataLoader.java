@@ -16,6 +16,7 @@ import guru.springframework.sfgpetclinic.model.Speciality;
 import guru.springframework.sfgpetclinic.model.Vet;
 import guru.springframework.sfgpetclinic.model.Visit;
 import guru.springframework.sfgpetclinic.service.OwnerService;
+import guru.springframework.sfgpetclinic.service.PetTypeService;
 import guru.springframework.sfgpetclinic.service.SpecialityService;
 import guru.springframework.sfgpetclinic.service.VetService;
 import guru.springframework.sfgpetclinic.service.VisitService;
@@ -23,6 +24,8 @@ import guru.springframework.sfgpetclinic.service.VisitService;
 @Component
 public class DataLoader implements CommandLineRunner {
 
+	private final PetTypeService petTypeService;
+	
 	private final OwnerService ownerService;
 	
 	private final VetService vetService;
@@ -34,9 +37,9 @@ public class DataLoader implements CommandLineRunner {
 	
 	@Autowired
 	public DataLoader(
-			OwnerService ownerService, VetService vetService, SpecialityService specialityService,
+			PetTypeService petTypeService, OwnerService ownerService, VetService vetService, SpecialityService specialityService,
 			VisitService visitService) {
-		super();
+		this.petTypeService = petTypeService;
 		this.ownerService = ownerService;
 		this.vetService = vetService;
 		this.specialityService = specialityService;
@@ -55,9 +58,11 @@ public class DataLoader implements CommandLineRunner {
 	private void loadData() {
 		PetType dog = new PetType();
 		dog.setName("Dog");
-
+		dog = petTypeService.save(dog);
+		
 		PetType cat = new PetType();
-		dog.setName("Cat");
+		cat.setName("Cat");
+		cat = petTypeService.save(dog);
 		
 		System.out.println("Loaded PetTypes ---");
 				
