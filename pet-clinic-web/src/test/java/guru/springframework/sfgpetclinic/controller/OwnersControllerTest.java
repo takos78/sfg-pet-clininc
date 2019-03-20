@@ -1,6 +1,7 @@
 package guru.springframework.sfgpetclinic.controller;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
@@ -27,10 +28,10 @@ import guru.springframework.sfgpetclinic.service.OwnerService;
 public class OwnersControllerTest {
 
 	@Autowired
-    private MockMvc mvc; // Class under test
+    private MockMvc ownerController; // Class under test
 	
 	@MockBean
-    private OwnerService service;
+    private OwnerService ownerService;
 	
 	Set<Owner> owners;
 	
@@ -49,15 +50,23 @@ public class OwnersControllerTest {
 		
 		owners.add(owner);
 		
-		when(service.findAll()).thenReturn(owners);
+		when(ownerService.findAll()).thenReturn(owners);
 	}
 	
 	@Test
 	public void givenOwners_whenGetAllOwners_thenReturnAllOwners() throws Exception {
-		mvc.perform(get("/owners"))
+		ownerController.perform(get("/owners"))
 			.andExpect(status().isOk())
 			.andExpect(view().name("owners/index.html"))
 			.andExpect(model().attribute("owners", hasSize(2)));
 	}
 	
+	@Test
+	public void givenOwners_whenFindOwners_thenReturnNotImplemented() throws Exception {
+		ownerController.perform(get("/owners/find"))
+			.andExpect(status().isOk())
+			.andExpect(view().name("notimplemented"));
+		
+		verifyZeroInteractions(ownerService);
+	}
 }
